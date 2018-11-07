@@ -21,5 +21,8 @@ const Trip = new mongoose.Schema({
   user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
   place: {type: String, required: true},
   created: {type: Date, required: true},
-  desc: {type: String, required: false},
+  desc: {type: String, required: false}
 });
+
+mongoose.model('User', User);
+mongoose.model('Trip', Trip);

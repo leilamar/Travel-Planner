@@ -17,8 +17,6 @@ The application will store Users and Trips
 * each trip contains information about where the trip will take place and some other optional info
     * trips are user-specific
 
-(___TODO__: sample documents_)
-
 An Example User:
 
 ```javascript
@@ -40,27 +38,35 @@ An Example Trip:
 }
 ```
 
-## [Link to Commented First Draft Schema](db.js) 
-
-(___TODO__: create a first draft of your Schemas in db.js and link to it_)
+## [Click Here for Commented First Draft Schema](db.js) 
 
 ## Wireframes
 
-(___TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
+Landing page - page to go to when user not registered or  authenticated
 
-/list/create - page for creating a new shopping list
+![landing page](documentation/landing_page.png)
 
-![list create](documentation/list-create.png)
+Login or Registration Page
 
-/list - page for showing all shopping lists
+![login and registration](documentation/login_and_registration.png)
 
-![list](documentation/list.png)
+Home page - home page when user authenticated
 
-/list/slug - page for showing specific shopping list
+![home page](documentation/home_page.png)
 
-![list](documentation/list-slug.png)
+Planned trips page or completed trips page - view all planned trips or view all completed trips, can filter by place 
+
+![planned trips](documentation/planned_trips.png)
+
+Add trip - add a new trip, either planned or completed
+![add trip](documentation/add_trip.png)
+
+Profile - view and edit profile information, can supply a bio
+![Profile](documentation/my_profile.png)
 
 ## Site map
+
+![sitemap](documentation/sitemap.png)
 
 (___TODO__: draw out a site map that shows how pages are related to each other_)
 
@@ -75,6 +81,8 @@ An Example Trip:
 3. as a user, I can view all my planned trips
 4. as a user, I can view all my completed trips
 5. as a user, I can move a trip from planned to completed
+6. as a user, I can view my profile
+7. as a user, I can update my profile with a biography
 
 ## Research Topics
 
@@ -85,13 +93,13 @@ An Example Trip:
     * can only view personal travel list after authentication
 * (3 points) unit testing javascript
     * will use mocha  
-* (2 points) will use CSS framework
+* (2 points) use CSS framework
     * Materialize or Bootstrap
     * may drop this later
 
 10 points total out of 8 required points
 
-## [Link to Initial Main Project File](app.js) 
+## [Click Here for Initial Main Project File](app.js) 
 
 (___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
 
