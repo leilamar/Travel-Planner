@@ -1,20 +1,15 @@
-# Adventure Book: Travel Planner
+# My Adventure Book: Travel Planner
 
 ## Overview
+You spend so long dreaming about where you want to go in the world and what you want to do, some things might fall through the cracks. There are too many places to keep track.
 
-(___TODO__: a brief one or two paragraph, high-level description of your project_)
-
-You spend so long dreaming about where you want to go in the world and what you want to do, some things might fall through the cracks. What was that cafe you wanted to go to in Paris? What was that hike you wantted to do in Yosemite? 
-
-Don't worry! Adventure Book is a web app that allows you to keep track of all your travel plans, past and future. Users can register and log in. Once they've logged in, they can create plans for places they want to visit, and can keep track of places they've visited by adding a plan to a list of completed trips. Once they've completed a trip, they can move it to their list of completed trips.
+Don't worry! My Adventure Book is a web app that allows you to keep track of all your travel plans, past and future. Users can register and log in. Once they've logged in, they can create plans for places they want to visit, and can keep track of places they've already visited by adding a plan to a list of completed trips. And once they've completed a trip on their list of planned trips, they can move it to their list of completed trips.
 
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_) 
-
 The application will store Users and Trips
 * users can have a list of planned trips and completed trips
-* each trip contains information about where the trip will take place and some other optional info
+* each trip contains information about where the trip will take place and some other optional info, like a description
     * trips are user-specific
 
 An Example User:
@@ -72,8 +67,6 @@ Profile - view and edit profile information, can supply a bio
 
 ## User Stories
 
-(___TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
-
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
 3. as a user, I can add a trip
@@ -101,8 +94,4 @@ Profile - view and edit profile information, can supply a bio
 
 ## [Click Here for Initial Main Project File](app.js) 
 
-(___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
-
 ## Annotations / References Used
-
-(___TODO__: list any tutorials/references/etc. that you've based your code off of_)

@@ -9,9 +9,8 @@ const app = express();
 // enable sessions
 const session = require('express-session');
 const sessionOptions = {
-    secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
-      saveUninitialized: true
+    saveUninitialized: false
 };
 app.use(session(sessionOptions));
 
