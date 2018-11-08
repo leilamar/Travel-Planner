@@ -63,8 +63,6 @@ Profile - view and edit profile information, can supply a bio
 
 ![sitemap](documentation/sitemap.png)
 
-(___TODO__: draw out a site map that shows how pages are related to each other_)
-
 ## User Stories
 
 1. as non-registered user, I can register a new account with the site
