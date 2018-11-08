@@ -9,7 +9,8 @@ const User = new mongoose.Schema({
   // username provided by authentication plugin
   // password hash provided by authentication plugin
   planned: [Trip],
-  completed: [Trip]
+  completed: [Trip],
+  bio: {type: String, required: false}
 });
 
 // a plan

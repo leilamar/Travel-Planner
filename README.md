@@ -17,9 +17,10 @@ An Example User:
 ```javascript
 {
   username: "dreaming_of_paris",
-  hash: // a password hash,
+  hash: // a password hash
   planned: // an array of Trip documents
   completed: // an array of Trip documents
+  bio: "I love trying new foods and exploring new places all over the world. I speak English and French."
 }
 ```
 
