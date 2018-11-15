@@ -94,3 +94,6 @@ Profile - view and edit profile information, can supply a bio
 ## [Click Here for Initial Main Project File](app.js) 
 
 ## Annotations / References Used
+Authentication - `passport` module
+* [official documentation](http://www.passportjs.org/)
+* [class notes on authentication](https://cs.nyu.edu/courses/fall18/CSCI-UA.0480-003/_site/slides/16/auth.html?print-pdf#/)
