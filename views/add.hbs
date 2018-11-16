@@ -1,0 +1,17 @@
+<h2>Add a trip</h2>
+<form method="POST" action="add">
+	<div>
+		<label for="place">Place:</label>
+		<input type="text" id="place" name="place" value="">
+	</div>
+	<div>
+		<label for="desc">Description:</label>
+		<textarea name="desc" id="desc"></textarea>
+	</div>
+    <div id="radio-list">
+        <label>Your trip is...</label>
+		<input type="radio" name="tripType" value="planned" checked><label for="planned">Planned</label>
+        <input type="radio" name="tripType" value="completed"><label for="completed">Completed</label>
+	</div>
+	<input type="submit" value="Add">
+</form>

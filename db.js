@@ -7,7 +7,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 // * date: date the plan was created
 // * desc: description of the place and what you want to do there
 const Trip = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+  user: {type: mongoose.Schema.Types.ObjectId, ref:'User'}, // needed?
   place: {type: String, required: true},
   created: {type: Date, required: true},
   desc: {type: String, required: false}

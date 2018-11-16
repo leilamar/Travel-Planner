@@ -1,1 +1,31 @@
-Homepage
+{{#if user}}
+    <h2>Planned Trips:</h2>
+    {{#if user.planned}}
+        {{#each user.planned as |plan|}}
+            <p>{{plan.place}}:</p>
+            <p>{{plan.desc}}</p>
+            <hr>
+        {{/each}}
+    {{else}}
+        <p>You don't have any trips planned. Click <a href="/add">here</a> to add a trip.</p>
+    {{/if}}
+
+    <h2>Completed Trips:</h2>
+    {{#if user.completed}}
+        {{#each user.completed as |complete|}}
+            <p>{{complete.place}}:</p>
+            <p>{{complete.desc}}</p>
+            <hr>
+        {{/each}}
+    {{else}}
+        <p>You haven't completed any trips. Click <a href="/add">here</a> to add a trip.
+    {{/if}}
+    <p><a href="/add">Add a trip</a></p>
+{{else}}
+    <p>
+        My Adventure Book is a web app that allows you to keep track 
+        of all your travel plans. Users can register and log in. 
+        Create plans for places you want to visit and keep track 
+        of places you've already been!
+    </p>
+{{/if}}
