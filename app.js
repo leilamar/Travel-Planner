@@ -9,6 +9,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const app = express();
 const User = mongoose.model('User');
+const Trip = mongoose.model('Trip');
 
 // enable sessions
 const session = require('express-session');
@@ -33,12 +34,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// const index = require('./routes/index');
-// app.use('/', index);
-
 app.use(function(req, res, next){
-	res.locals.user = req.user;
-	next();
+    res.locals.user = req.user;
+    next();
 });
 
 app.set('views', path.join(__dirname, "views"));
@@ -78,6 +76,69 @@ app.post('/register', function(req, res) {
             });
         }
     });   
+});
+
+app.get('/add', (req, res) => {
+    if(req.user){
+        res.render('add');
+    } else {
+        res.redirect('/login', {message: `You must be logged in to add a trip`});
+    }
+});
+
+app.post('/add', (req, res) => {
+    console.log(req.body);
+    User.findOne({username: req.user.username}, (err,user) => {
+        new Trip({
+            user: user, 
+            place: req.body.place,
+            created: Date.now(), // how to get current time?
+            desc: req.body.desc
+        }).save((err, trip) => {
+            console.log('saved trip');
+            console.log('user.planned', user.planned)
+            user.planned.unshift(trip);
+
+            // if(req.body.tripType === 'planned') {
+            //     console.log('planned');
+            //     user.planned.unshift(trip);
+            //     console.log(user.planned);
+            // } else if (req.body.tripType === 'completed') {
+            //     console.log('completed');
+            //     user.completed.unshift(trip);
+            // }
+
+            user.save((err, saved) =>{
+                console.log("saved user");
+                //console.log('user.planned', user.planned)   
+            });
+            
+            res.redirect('/');
+        });
+    });
+
+    // new Trip({
+    //     user: req.user, 
+    //     place: req.body.place,
+    //     created: Date.now(), // how to get current time?
+    //     desc: req.body.description
+    // }).save((err, trip) => {
+    //     console.log('saved trip');
+    //     console.log('req.user.planned', req.user.planned)
+    //     if(req.body.tripType === 'planned') {
+    //         console.log('planned');
+    //         req.user.planned.push(trip);
+    //         console.log(req.user.planned);
+    //     } else if (req.body.tripType === 'completed') {
+    //         console.log('completed');
+    //         req.user.planned.push(trip);
+    //     }
+    //     req.user.save((err, user) =>{
+    //         console.log("saved user");
+    //         console.log('req.user.planned', req.user.planned)
+    //         res.redirect('/');
+    //     });
+    // });
 });
 
 app.listen(3000);
