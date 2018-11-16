@@ -2,15 +2,13 @@ require('./db');
 require('./auth');
 
 const express = require('express');
-const router = express.Router();
+//const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const app = express();
 const User = mongoose.model('User');
-
-module.exports = router;
 
 // enable sessions
 const session = require('express-session');
@@ -35,20 +33,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// const index = require('./routes/index');
+// app.use('/', index);
+
 app.use(function(req, res, next){
 	res.locals.user = req.user;
 	next();
 });
 
+app.set('views', path.join(__dirname, "views"));
+
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/login', function(req, res) {
-  res.render('login');
+app.get('/login', (req, res) => {
+    res.render('login');
 });
 
-router.post('/login', function(req,res,next) {
+app.post('/login', function(req,res,next) {
     passport.authenticate('local', function(err,user) {
         if(user) {
             req.logIn(user, function(err) {
@@ -58,13 +61,13 @@ router.post('/login', function(req,res,next) {
             res.render('login', {message:'Your login or password is incorrect.'});
         }
     })(req, res, next);
-  });
+});
 
-router.get('/register', function(req, res) {
+app.get('/register', function(req, res) {
   res.render('register');
 });
 
-router.post('/register', function(req, res) {
+app.post('/register', function(req, res) {
     User.register(new User({username: req.body.username}), 
         req.body.password, function(err, user){
         if (err) {
