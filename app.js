@@ -90,7 +90,8 @@ app.get('/add', (req, res) => {
     if(req.user){
         res.render('add');
     } else {
-        res.redirect('/login', {message: `You must be logged in to add a trip`});
+        console.log('should redirect to login');
+        res.redirect('/login');
     }
 });
 
@@ -115,8 +116,7 @@ app.post('/add', (req, res) => {
             if(req.body.tripType === 'planned') {
                 console.log('planned');
                 user.planned.unshift(trip);
-            }
-            if (req.body.tripType === 'completed') {
+            } else if (req.body.tripType === 'completed') {
                 console.log('completed');
                 user.completed.unshift(trip);
             }
