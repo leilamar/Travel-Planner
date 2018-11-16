@@ -30,6 +30,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// log request path and query/body
+app.use((req,res,next) =>{
+	console.log(req.method, req.path);
+	console.log('req.query: ', req.query);
+	console.log('req.body: ', req.body, '\n');
+	next();
+});
+
 // initialize passport and enable sessions
 app.use(passport.initialize());
 app.use(passport.session());
@@ -96,49 +104,30 @@ app.post('/add', (req, res) => {
             desc: req.body.desc
         }).save((err, trip) => {
             console.log('saved trip');
-            console.log('user.planned', user.planned)
-            user.planned.unshift(trip);
+            console.log('user', user);
+            console.log('user.planned', user.planned);
+            console.log('user.completed', user.completed);
+            // don't do this
+            // console.log('user.planned', user.planned)
 
-            // if(req.body.tripType === 'planned') {
-            //     console.log('planned');
-            //     user.planned.unshift(trip);
-            //     console.log(user.planned);
-            // } else if (req.body.tripType === 'completed') {
-            //     console.log('completed');
-            //     user.completed.unshift(trip);
-            // }
+            console.log('req.body.tripType', req.body.tripType);
 
+            if(req.body.tripType === 'planned') {
+                console.log('planned');
+                user.planned.unshift(trip);
+            }
+            if (req.body.tripType === 'completed') {
+                console.log('completed');
+                user.completed.unshift(trip);
+            }
+            
             user.save((err, saved) =>{
                 console.log("saved user");
-                //console.log('user.planned', user.planned)   
+                //console.log('user.planned', user.planned) 
+                res.redirect('/');  
             });
-            
-            res.redirect('/');
         });
     });
-
-    // new Trip({
-    //     user: req.user, 
-    //     place: req.body.place,
-    //     created: Date.now(), // how to get current time?
-    //     desc: req.body.description
-    // }).save((err, trip) => {
-    //     console.log('saved trip');
-    //     console.log('req.user.planned', req.user.planned)
-    //     if(req.body.tripType === 'planned') {
-    //         console.log('planned');
-    //         req.user.planned.push(trip);
-    //         console.log(req.user.planned);
-    //     } else if (req.body.tripType === 'completed') {
-    //         console.log('completed');
-    //         req.user.planned.push(trip);
-    //     }
-    //     req.user.save((err, user) =>{
-    //         console.log("saved user");
-    //         console.log('req.user.planned', req.user.planned)
-    //         res.redirect('/');
-    //     });
-    // });
 });
 
 app.listen(3000);
