@@ -29,7 +29,7 @@ User.plugin(passportLocalMongoose);
 mongoose.model('User', User);
 mongoose.model('Trip', Trip);
 
-// is the environment variable, NODE_ENV, set to PRODUCTION? 
+// set db to local or production database
 let dbconf;
 if (process.env.NODE_ENV === 'PRODUCTION') {
     // if we're in PRODUCTION mode, then read the configration from a file

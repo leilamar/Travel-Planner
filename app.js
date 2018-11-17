@@ -30,11 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// log request path and query/body
+// log request path and method
 app.use((req,res,next) =>{
 	console.log(req.method, req.path);
-	console.log('req.query: ', req.query);
-	console.log('req.body: ', req.body, '\n');
+	// console.log('req.query: ', req.query);
+	// console.log('req.body: ', req.body, '\n');
 	next();
 });
 
@@ -90,13 +90,13 @@ app.get('/add', (req, res) => {
     if(req.user){
         res.render('add');
     } else {
-        console.log('should redirect to login');
+        // console.log('redirect to login');
         res.redirect('/login');
     }
 });
 
 app.post('/add', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     User.findOne({username: req.user.username}, (err,user) => {
         new Trip({
             user: user, 
@@ -104,26 +104,23 @@ app.post('/add', (req, res) => {
             created: Date.now(), // how to get current time?
             desc: req.body.desc
         }).save((err, trip) => {
-            console.log('saved trip');
-            console.log('user', user);
-            console.log('user.planned', user.planned);
-            console.log('user.completed', user.completed);
-            // don't do this
-            // console.log('user.planned', user.planned)
-
-            console.log('req.body.tripType', req.body.tripType);
+            // console.log('saved trip');
+            // console.log('user', user);
+            // console.log('user.planned', user.planned);
+            // console.log('user.completed', user.completed);
+            // console.log('req.body.tripType', req.body.tripType);
 
             if(req.body.tripType === 'planned') {
-                console.log('planned');
+                // console.log('planned');
                 user.planned.unshift(trip);
             } else if (req.body.tripType === 'completed') {
-                console.log('completed');
+                // console.log('completed');
                 user.completed.unshift(trip);
             }
             
             user.save((err, saved) =>{
-                console.log("saved user");
-                //console.log('user.planned', user.planned) 
+                // console.log("saved user");
+                // console.log('user.planned', user.planned) 
                 res.redirect('/');  
             });
         });
