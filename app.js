@@ -34,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next) =>{
 	console.log(req.method, req.path);
 	// console.log('req.query: ', req.query);
-	// console.log('req.body: ', req.body, '\n');
+    // 
+    ('req.body: ', req.body, '\n');
 	next();
 });
 
@@ -57,6 +58,7 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+// based off of authentication slides
 app.post('/login', function(req,res,next) {
     passport.authenticate('local', function(err,user) {
         if(user) {
@@ -73,6 +75,7 @@ app.get('/register', function(req, res) {
   res.render('register');
 });
 
+// based off of authentication slides
 app.post('/register', function(req, res) {
     User.register(new User({username: req.body.username}), 
         req.body.password, function(err, user){
