@@ -1,3 +1,8 @@
 body {
 	font-family: sans-serif;
 }
+
+#bio-input {
+    width: 50%;
+    min-width: 500px;
+}

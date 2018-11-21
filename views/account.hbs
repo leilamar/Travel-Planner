@@ -1,0 +1,10 @@
+{{#if user.bio}}
+    {{user.bio}}
+    <!--<button>Update</button>-->
+{{else}}
+    <h3>Introduce yourself!</h3>
+    <form method="POST" action="account">
+	<textarea id="bio-input" name="bio" rows="5"></textarea><br>
+	<input type="submit" value="Update Profile">
+</form>
+{{/if}}

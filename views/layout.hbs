@@ -9,7 +9,8 @@
 	<h1>My Adventure Book</h1>
 	<a href="/">Home</a><br>
 	{{#if user}}
-		Welcome, {{user.username}}!
+		<a href="/account">Account</a><br>
+		Welcome, {{user.username}}! <br>
 	{{else}}
 		<a href="/login">Login</a><br>
 		<a href="/register">Register</a><br>

@@ -51,7 +51,10 @@ app.use(function(req, res, next){
 app.set('views', path.join(__dirname, "views"));
 
 app.get('/', (req, res) => {
-  res.render('index');
+    if(req.query.place) {
+        console.log('we gon filter')
+    }
+    res.render('index');
 });
 
 app.get('/login', (req, res) => {
@@ -126,6 +129,23 @@ app.post('/add', (req, res) => {
                 // console.log('user.planned', user.planned) 
                 res.redirect('/');  
             });
+        });
+    });
+});
+
+app.get('/account', (req, res) => {
+    if(req.user){
+        res.render('account');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.post('/account', (req, res) => {
+    User.findOne({username: req.user.username}, (err,user) => {
+        user.bio = req.body.bio;
+        user.save((err, saved) =>{
+            res.redirect('/account');  
         });
     });
 });

@@ -20,6 +20,14 @@
     {{else}}
         <p>You haven't completed any trips. Click <a href="/add">here</a> to add a trip.
     {{/if}}
+
+    <form method="GET" action="/">
+        <p>Filter view:</p>
+        <p>
+        place <input type="text" name="place">
+        <input type="submit" value="filter">
+        </p>
+    </form>
     <p><a href="/add">Add a trip</a></p>
 {{else}}
     <p> My Adventure Book is a web app that allows you to keep track 
