@@ -33,9 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // log request path and method
 app.use((req,res,next) =>{
 	console.log(req.method, req.path);
-	// console.log('req.query: ', req.query);
-    // 
-    ('req.body: ', req.body, '\n');
+	console.log('req.query: ', req.query);
+    // console.log('req.body: ', req.body, '\n');
 	next();
 });
 
@@ -51,10 +50,34 @@ app.use(function(req, res, next){
 app.set('views', path.join(__dirname, "views"));
 
 app.get('/', (req, res) => {
-    if(req.query.place) {
-        console.log('we gon filter')
+    if(req.user) {
+        let context = null;
+        // if query, filter by query
+        if(req.query.place && req.query.place !== '') {
+            // filter planned trips
+            let filteredPlanned = [];
+            for(let i = 0; i < req.user.planned.length; i++) {
+                if(req.user.planned[i].place.includes(req.query.place)) {
+                    filteredPlanned.push(req.user.planned[i]);
+                }
+            }
+
+            // filter completed trips
+            let filteredCompleted = [];
+            for(let i = 0; i < req.user.completed.length; i++) {
+                if(req.user.completed[i].place.includes(req.query.place)) {
+                    filteredCompleted.push(req.user.completed[i]);
+                }
+            }
+            context = {planned: filteredPlanned, completed: filteredCompleted, query: req.query.place};
+        } else { // otherwise use whole list
+            context = {planned: req.user.planned, completed: req.user.completed};
+        }
+        res.render('index', context);
+    } else {
+        // if no user, context not needed
+        res.render('index');
     }
-    res.render('index');
 });
 
 app.get('/login', (req, res) => {
