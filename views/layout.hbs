@@ -4,17 +4,45 @@
 	<meta charset="utf-8">
 	<title></title>
 	<link rel="stylesheet" href="/css/base.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/css/materialize.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<h1>My Adventure Book</h1>
-	<a href="/">Home</a><br>
 	{{#if user}}
-		<a href="/account">Account</a><br>
-		Welcome, {{user.username}}! <br>
+	<nav id="header" class="green lighten-2 navbar" role="navigation">
+        <div class="nav-wrapper container">
+			<a id="logo-container" href="/" class="brand-logo white-text">My Adventure Book</a>
+			<ul id="nav-links" class="right hide-on-med-and-down lighten-2" style="padding-left: 200px">
+				<li><a href="/">Home</a></li>
+				<li><a href="/account">My Account</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+        </div>
+    </nav>
+
+	<h5>Welcome, {{user.username}}!</h5>
+
 	{{else}}
-		<a href="/login">Login</a><br>
-		<a href="/register">Register</a><br>
+		<nav id="header" class="green lighten-2" role="navigation">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="/" class="brand-logo white-text">My Adventure Book</a>
+				<ul id="nav-links" class="right hide-on-med-and-down yellow-text lighten-2">
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
+				</ul>
+			</div>
+      </nav>
 	{{/if}}
+
 	{{{ body }}}
+
+	 {{!-- <footer class="page-footer green lighten-2">
+		<div class="footer-copyright">
+			<div class="container">
+			AIT Fall 2018
+			<a class="grey-text text-lighten-4 right" href="https://github.com/leilamar">About</a>
+			</div>
+		</div>
+	</footer> --}}
 </body>
 </html>

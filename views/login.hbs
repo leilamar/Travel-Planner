@@ -1,9 +1,9 @@
-<h2>Login</h2>
+<h3>Login</h3>
 {{#if message}}
     <div class="error">{{ message }}</div>
 {{/if}}
 
-<form method="POST" action="login">
+<form method="POST" action="login" class="short-form">
     <div>
 		<label for="username">Username:</label>
 		<input type="text" name="username" value="">
@@ -13,6 +13,6 @@
 		<input type="password" name="password" value="">
 	</div>
     <div>
-		<input type="submit" value="Login">
+		<input type="submit" class="btn" value="Login">
 	</div>
 </form>

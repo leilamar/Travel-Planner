@@ -1,9 +1,9 @@
-<h2>Register</h2>
+<h3>Register</h3>
 {{#if message}}
     <div class="error">{{ message }}</div>
 {{/if}}
 
-<form method="POST" action="register">
+<form method="POST" action="register" class="short-form">
     <div>
 		<label for="username">Username:</label>
 		<input type="text" name="username" value="">
@@ -13,6 +13,6 @@
 		<input type="password" name="password" value="">
 	</div>
 	<div>
-		<input type="submit" value="Register">
+		<input type="submit" class="btn" value="Register">
 	</div>
 </form>

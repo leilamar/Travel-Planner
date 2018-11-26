@@ -1,8 +1,51 @@
 body {
+	padding-top: 70px;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
 	font-family: sans-serif;
 }
 
-#bio-input {
+#logo-container {
+	position: relative;
+	right: 145px;
+}
+
+#nav-links {
+	position: relative;
+	left: 155px;
+}
+
+.short-form {
+	width: 300px;
+}
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+#filter-card {
+	position: fixed;
+	top: 100px;
+	right: 50px;
+	width: 1200px;
+}
+
+/* #bio-input {
     width: 50%;
     min-width: 500px;
+} */
+
+.hidden {
+	display: none;
 }
+
+/* .page-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+} */

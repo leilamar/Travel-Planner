@@ -2,53 +2,193 @@
     {{#if query}}
     <p>All trips involving "{{query}}"</p>
     {{/if}}
-    
+
+    <div id="filter-card" class="row">
+        <div class="col s4 offset-s8">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <form method="GET" action="/" class="short-form">
+                        <span class="card-title">Filter view:</span>
+                        <input type="text" placeholder="place" name="place">
+                        <input class="btn" type="submit" value="filter">
+                    </form>
+                </div>
+                <div class="card-action">
+                    <a href="/add">Add a trip</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{#if planned}}
-    <h2>Planned Trips:</h2>
+    <h4>Planned Trips:</h4>
         {{#each planned as |plan|}}
-            <p>{{plan.place}}:</p>
-            <p>{{plan.desc}}</p>
-            <hr>
+        <div class="row">
+            <div class="col s12 m7">
+            <div class="card">
+                {{!-- <div class="card-image">
+                    <img src="img/sample-1.jpg">
+                    <span class="card-title">{{plan.place}}</span>
+                </div> --}}
+                <div class="card-content">
+                    <span class="card-title">{{plan.place}}</span>
+                    <p>{{plan.desc}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="">Edit</a>
+                </div>
+            </div>
+            </div>
+        </div>
         {{/each}}
+        <form method="GET" action="/test">
+            <input class="hidden" type="text" name="type" value="planned">
+            <input class="btn" type="submit" value="More">
+        </form>
     {{/if}}
 
     <!-- TODO find not if-->
     {{#if user.planned}}
         
     {{else}}
-        <h2>Planned Trips:</h2>
-        <p>You don't have any trips planned. Click <a href="/add">here</a> to add a trip.</p>
+        <h4>Planned Trips:</h4>
+        <p>You don't have any trips planned.</p>
+        <a href="/add" class="btn">Add a trip</a>
     {{/if}}
 
     {{#if completed}}
-    <h2>Completed Trips:</h2>
+    <br><hr>
+    <h4>Completed Trips:</h4>
         {{#each completed as |complete|}}
-            <p>{{complete.place}}:</p>
-            <p>{{complete.desc}}</p>
-            <hr>
+        <div class="row">
+            <div class="col s12 m7">
+            <div class="card">
+                {{!-- <div class="card-image">
+                    <img src="img/sample-2.jpg">
+                    <span class="card-title">{{complete.place}}</span>
+                </div> --}}
+                <div class="card-content">
+                    <span class="card-title">{{complete.place}}</span>
+                    <p>{{complete.desc}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="">Edit</a>
+                </div>
+            </div>
+            </div>
+        </div>
         {{/each}}
+        <form method="GET" action="/test">
+            <input class="hidden" type="text" name="type" value="completed">
+            <input class="btn" type="submit" value="More">
+        </form>
     {{/if}}
 
     <!-- TODO find not if-->
     {{#if user.planned}}
         
     {{else}}
-        <h2>Completed Trips:</h2>
-        <p>You haven't completed any trips. Click <a href="/add">here</a> to add a trip.</p>
+        <h4>Completed Trips:</h4>
+        <p>You haven't completed any trips.</p>
+        <a href="/add" class="btn">Add a trip</a>
     {{/if}}
 
-    <form method="GET" action="/">
+    {{!-- <form method="GET" action="/">
         <p>Filter view:</p>
         <p>
-        place <input type="text" name="place">
-        <input type="submit" value="filter">
+        <input type="text" placeholder="place" name="place">
+        <input class="btn" type="submit" value="filter">
         </p>
     </form>
-    <p><a href="/add">Add a trip</a></p>
+    <p><a href="/add">Add a trip</a></p> --}}
+    
 {{else}}
-    <p> My Adventure Book is a web app that allows you to keep track 
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+          <div class="container">
+            <br><br><br><br><br>
+
+            <div class="row center">
+                <div class="col s12">
+                    {{#if message}}
+                      <div class="row center">
+                        <div class="col s12">
+                          <div class="card yellow">
+                            <span class="light"><h5>{{message}}</h5></span>
+                          </div>
+                        </div>
+                      </div>
+                    {{/if}}
+
+                    <span class="light teal-text" style="text-shadow: 2px 2px 4px #000000;"><h4>Start your adventure here</h4></span>
+                    <br><br>
+                    <!--<a href="register" class="btn-large waves-effect waves-light red lighten-2 z-depth-3">Register</a>-->
+                    <a class="btn-large waves-effect waves-light lighten-2 z-depth-3" href="/register">Register</a>
+                    <a class="btn-large waves-effect waves-light lighten-2 z-depth-3" href="/login">Login</a>
+                </div>
+            </div>
+            <br><br>
+
+          </div>
+        </div>
+        <div class="parallax"><img src="img/landing-1.jpg" alt="Unsplashed background img 1"></div>
+      </div>
+
+      <div class="container">
+        <div class="section">
+
+          <!--   Icon Section   -->
+          {{!-- <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                <h5 class="center">Convenient</h5>
+
+                <p class="light">Text here.</p>
+              </div>
+            </div> --}}
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center teal-text"><i class="material-icons">favorite</i></h2>
+                <h5 class="center">Personalized</h5>
+
+                <p class="light">My Adventure Book is a web app that allows you to keep track 
+                of all your travel plans. Create plans for places you want to 
+                visit and keep track of places you've already been!</p>
+              </div>
+            </div>
+
+            {{!-- <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">account_circle</i></h2>
+                <h5 class="center">Easy to Use</h5>
+
+                <p class="light">Text here.</p>
+              </div>
+            </div>
+          </div> --}}
+
+        </div>
+      </div>
+
+      <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+          <div class="container">
+            <div class="row center">
+              <!--<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5> -->
+            </div>
+          </div>
+        </div>
+        <div class="parallax"><img src="/img/sample-1.jpg" alt="Unsplashed background img 3"></div>
+      </div>
+
+
+    {{!-- <p> My Adventure Book is a web app that allows you to keep track 
     of all your travel plans. Create plans for places you want to 
     visit and keep track of places you've already been!</p>
     
     <p>Log in or register to start your adventure book.</p>
+    <a class="btn" href="/login">Login</a>
+    <a class="btn" href="/register">Register</a> --}}
 {{/if}}

@@ -49,6 +49,7 @@ app.use(function(req, res, next){
 
 app.set('views', path.join(__dirname, "views"));
 
+// TODO make filtering ignore case
 app.get('/', (req, res) => {
     if(req.user) {
         let context = null;
@@ -77,6 +78,14 @@ app.get('/', (req, res) => {
     } else {
         // if no user, context not needed
         res.render('index');
+    }
+});
+
+app.get('/test', (req, res) => {
+    if(req.query.type === 'planned'){
+        res.render('list', {list: req.user.planned});
+    } else if(req.query.type === 'completed'){
+        res.render('list', {list: req.user.completed});
     }
 });
 
@@ -113,6 +122,11 @@ app.post('/register', function(req, res) {
             });
         }
     });   
+});
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
 });
 
 app.get('/add', (req, res) => {
@@ -171,6 +185,14 @@ app.post('/account', (req, res) => {
             res.redirect('/account');  
         });
     });
+});
+
+app.get('/list', (req, res) => {
+    if(req.user){
+        res.render('list', {list: req.user.planned})
+    } else {
+        res.redirect('/login');
+    }
 });
 
 app.listen(process.env.PORT || 3000);
