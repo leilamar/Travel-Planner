@@ -110,85 +110,42 @@
 
             <div class="row center">
                 <div class="col s12">
-                    {{#if message}}
-                      <div class="row center">
-                        <div class="col s12">
-                          <div class="card yellow">
-                            <span class="light"><h5>{{message}}</h5></span>
-                          </div>
-                        </div>
-                      </div>
-                    {{/if}}
-
-                    <span class="light teal-text" style="text-shadow: 2px 2px 4px #000000;"><h4>Start your adventure here</h4></span>
+                    <span class="light white-text" style="text-shadow: 2px 2px 4px #000000;"><h4>Start your adventure here</h4></span>
                     <br><br>
-                    <!--<a href="register" class="btn-large waves-effect waves-light red lighten-2 z-depth-3">Register</a>-->
-                    <a class="btn-large waves-effect waves-light lighten-2 z-depth-3" href="/register">Register</a>
-                    <a class="btn-large waves-effect waves-light lighten-2 z-depth-3" href="/login">Login</a>
+                    <a class="btn-large green waves-effect waves-light lighten-2 z-depth-3" href="/register">Register</a>
+                    <a class="btn-large green waves-effect waves-light lighten-2 z-depth-3" href="/login">Login</a>
                 </div>
             </div>
             <br><br>
 
           </div>
         </div>
-        <div class="parallax"><img src="img/landing-1.jpg" alt="Unsplashed background img 1"></div>
+        <div class="parallax"><img src="img/landing-2.jpg"></div>
       </div>
 
       <div class="container">
         <div class="section">
-
-          <!--   Icon Section   -->
-          {{!-- <div class="row">
             <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                <h5 class="center">Convenient</h5>
+                <div class="icon-block">
+                    <h2 class="center green-text"><i class="material-icons">favorite</i></h2>
 
-                <p class="light">Text here.</p>
-              </div>
-            </div> --}}
-
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center teal-text"><i class="material-icons">favorite</i></h2>
-                <h5 class="center">Personalized</h5>
-
-                <p class="light">My Adventure Book is a web app that allows you to keep track 
-                of all your travel plans. Create plans for places you want to 
-                visit and keep track of places you've already been!</p>
-              </div>
+                    <h5 class="light">My Adventure Book is a web app that allows you to keep track 
+                    of all your travel plans. Create plans for places you want to 
+                    visit and keep track of places you've already been!</h5>
+                    <br><br><br>
+                </div>
             </div>
-
-            {{!-- <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">account_circle</i></h2>
-                <h5 class="center">Easy to Use</h5>
-
-                <p class="light">Text here.</p>
-              </div>
-            </div>
-          </div> --}}
-
         </div>
-      </div>
+    </div>
 
-      <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-          <div class="container">
-            <div class="row center">
-              <!--<h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5> -->
-            </div>
-          </div>
-        </div>
-        <div class="parallax"><img src="/img/sample-1.jpg" alt="Unsplashed background img 3"></div>
-      </div>
-
-
-    {{!-- <p> My Adventure Book is a web app that allows you to keep track 
-    of all your travel plans. Create plans for places you want to 
-    visit and keep track of places you've already been!</p>
-    
-    <p>Log in or register to start your adventure book.</p>
-    <a class="btn" href="/login">Login</a>
-    <a class="btn" href="/register">Register</a> --}}
+    <div class="parallax-container">
+        <div class="parallax"><img src="img/landing-3.jpg"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.parallax').parallax();
+        });
+    </script>
 {{/if}}
