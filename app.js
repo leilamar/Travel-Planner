@@ -56,20 +56,24 @@ app.get('/', (req, res) => {
         // if query, filter by query
         if(req.query.place && req.query.place !== '') {
             // filter planned trips
-            let filteredPlanned = [];
-            for(let i = 0; i < req.user.planned.length; i++) {
-                if(req.user.planned[i].place.includes(req.query.place)) {
-                    filteredPlanned.push(req.user.planned[i]);
-                }
-            }
+            const filteredPlanned = req.user.planned.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
+
+            // let filteredPlanned = [];
+            // for(let i = 0; i < req.user.planned.length; i++) {
+            //     if(req.user.planned[i].place.includes(req.query.place)) {
+            //         filteredPlanned.push(req.user.planned[i]);
+            //     }
+            // }
+
+            const filteredCompleted = req.user.completed.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
 
             // filter completed trips
-            let filteredCompleted = [];
-            for(let i = 0; i < req.user.completed.length; i++) {
-                if(req.user.completed[i].place.includes(req.query.place)) {
-                    filteredCompleted.push(req.user.completed[i]);
-                }
-            }
+            // let filteredCompleted = [];
+            // for(let i = 0; i < req.user.completed.length; i++) {
+            //     if(req.user.completed[i].place.includes(req.query.place)) {
+            //         filteredCompleted.push(req.user.completed[i]);
+            //     }
+            // }
             context = {planned: filteredPlanned, completed: filteredCompleted, query: req.query.place};
         } else { // otherwise use whole list
             context = {planned: req.user.planned, completed: req.user.completed};

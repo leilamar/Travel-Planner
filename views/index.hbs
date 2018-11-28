@@ -43,7 +43,7 @@
         {{/each}}
         <form method="GET" action="/test">
             <input class="hidden" type="text" name="type" value="planned">
-            <input class="btn" type="submit" value="More">
+            <input class="btn" type="submit" value="See all">
         </form>
     {{/if}}
 
@@ -80,12 +80,12 @@
         {{/each}}
         <form method="GET" action="/test">
             <input class="hidden" type="text" name="type" value="completed">
-            <input class="btn" type="submit" value="More">
+            <input class="btn" type="submit" value="See all">
         </form>
     {{/if}}
 
     <!-- TODO find not if-->
-    {{#if user.planned}}
+    {{#if user.completed}}
         
     {{else}}
         <h4>Completed Trips:</h4>
