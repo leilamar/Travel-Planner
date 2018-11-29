@@ -84,7 +84,9 @@ Profile - view and edit profile information, can supply a bio
     * passwords will be salted and hashed
     * can only view personal travel list after authentication
 * (3 points) unit testing javascript
-    * will use mocha  
+    * mocha
+    * [See tests here](test/test.js) 
+    * ![unit test results images](documentation/unit-test-results.png)
 * (2 points) use CSS framework
     * Materialize or Bootstrap
     * may drop this later
@@ -97,3 +99,5 @@ Profile - view and edit profile information, can supply a bio
 Authentication - `passport` module
 * [official documentation](http://www.passportjs.org/)
 * [class notes on authentication](https://cs.nyu.edu/courses/fall18/CSCI-UA.0480-003/_site/slides/16/auth.html?print-pdf#/)
+* [handle a 404](https://www.hacksparrow.com/express-js-custom-error-pages-404-and-500.html)
+* [request module for testing](https://github.com/request/request)
