@@ -41,7 +41,7 @@
             </div>
         </div>
         {{/each}}
-        <form method="GET" action="/test">
+        <form method="GET" action="/list">
             <input class="hidden" type="text" name="type" value="planned">
             <input class="btn green" type="submit" value="See all">
         </form>
@@ -78,7 +78,7 @@
             </div>
         </div>
         {{/each}}
-        <form method="GET" action="/test">
+        <form method="GET" action="/list">
             <input class="hidden" type="text" name="type" value="completed">
             <input class="btn green" type="submit" value="See all">
         </form>
@@ -92,15 +92,6 @@
         <p>You haven't completed any trips.</p>
         <a href="/add" class="btn">Add a trip</a>
     {{/if}}
-
-    {{!-- <form method="GET" action="/">
-        <p>Filter view:</p>
-        <p>
-        <input type="text" placeholder="place" name="place">
-        <input class="btn" type="submit" value="filter">
-        </p>
-    </form>
-    <p><a href="/add">Add a trip</a></p> --}}
     
 {{else}}
     <!--landing page based off of materialize parallax demo (https://materializecss.com/parallax.html)-->

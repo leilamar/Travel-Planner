@@ -69,11 +69,17 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/test', (req, res) => {
-    if(req.query.type === 'planned'){
-        res.render('list', {list: req.user.planned});
-    } else if(req.query.type === 'completed'){
-        res.render('list', {list: req.user.completed});
+app.get('/list', (req, res) => {
+    if(req.user){
+        if(req.query.type === 'planned'){
+            res.render('list', {list: req.user.planned});
+        } else if(req.query.type === 'completed'){
+            res.render('list', {list: req.user.completed});
+        } else {
+            res.render('/');
+        }
+    } else {
+        res.redirect('/login');
     }
 });
 
@@ -174,17 +180,5 @@ app.post('/account', (req, res) => {
         });
     });
 });
-
-app.get('/list', (req, res) => {
-    if(req.user){
-        res.render('list', {list: req.user.planned})
-    } else {
-        res.redirect('/login');
-    }
-});
-
-// app.use(function(req, res) {
-//     res.status(404).send('404: Page not Found');
-// });
 
 app.listen(process.env.PORT || 3000);

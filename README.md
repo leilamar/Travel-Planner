@@ -3,7 +3,7 @@
 ## Overview
 You spend so long dreaming about where you want to go in the world and what you want to do, some things might fall through the cracks. There are too many places to keep track.
 
-Don't worry! My Adventure Book is a web app that allows you to keep track of all your travel plans, past and future. Users can register and log in. Once they've logged in, they can create plans for places they want to visit, and can keep track of places they've already visited by adding a plan to a list of completed trips. And once they've completed a trip on their list of planned trips, they can move it to their list of completed trips.
+Don't worry! My Adventure Book is a web app that allows you to keep track of all your travel plans, past and future. Users can register and log in. Once they've logged in, they can create plans for places they want to visit, and can keep track of places they've already visited by adding a plan to a list of completed trips. 
 
 ## Data Model
 
@@ -72,9 +72,8 @@ Profile - view and edit profile information, can supply a bio
 4. as a user, I can specify whether a trip is completed or planned on creation
 3. as a user, I can view all my planned trips
 4. as a user, I can view all my completed trips
-5. as a user, I can move a trip from planned to completed
-6. as a user, I can view my profile
-7. as a user, I can update my profile with a biography
+5. as a user, I can view my profile
+6. as a user, I can update my profile with a biography
 
 ## Research Topics
 
