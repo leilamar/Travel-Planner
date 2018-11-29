@@ -10,7 +10,7 @@
                     <form method="GET" action="/" class="short-form">
                         <span class="card-title">Filter view:</span>
                         <input type="text" placeholder="place" name="place">
-                        <input class="btn" type="submit" value="filter">
+                        <input class="btn green" type="submit" value="filter">
                     </form>
                 </div>
                 <div class="card-action">
@@ -43,7 +43,7 @@
         {{/each}}
         <form method="GET" action="/test">
             <input class="hidden" type="text" name="type" value="planned">
-            <input class="btn" type="submit" value="See all">
+            <input class="btn green" type="submit" value="See all">
         </form>
     {{/if}}
 
@@ -80,7 +80,7 @@
         {{/each}}
         <form method="GET" action="/test">
             <input class="hidden" type="text" name="type" value="completed">
-            <input class="btn" type="submit" value="See all">
+            <input class="btn green" type="submit" value="See all">
         </form>
     {{/if}}
 
@@ -103,6 +103,7 @@
     <p><a href="/add">Add a trip</a></p> --}}
     
 {{else}}
+    <!--landing page based off of materialize parallax demo (https://materializecss.com/parallax.html)-->
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
           <div class="container">

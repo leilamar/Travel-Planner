@@ -32,8 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // log request path and method
 app.use((req,res,next) =>{
-	console.log(req.method, req.path);
-	console.log('req.query: ', req.query);
+    console.log(req.method, req.path);
+    console.log(res.statusCode);
+    console.log('req.query: ', req.query);
     // console.log('req.body: ', req.body, '\n');
 	next();
 });
@@ -49,7 +50,6 @@ app.use(function(req, res, next){
 
 app.set('views', path.join(__dirname, "views"));
 
-// TODO make filtering ignore case
 app.get('/', (req, res) => {
     if(req.user) {
         let context = null;
@@ -57,23 +57,7 @@ app.get('/', (req, res) => {
         if(req.query.place && req.query.place !== '') {
             // filter planned trips
             const filteredPlanned = req.user.planned.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
-
-            // let filteredPlanned = [];
-            // for(let i = 0; i < req.user.planned.length; i++) {
-            //     if(req.user.planned[i].place.includes(req.query.place)) {
-            //         filteredPlanned.push(req.user.planned[i]);
-            //     }
-            // }
-
             const filteredCompleted = req.user.completed.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
-
-            // filter completed trips
-            // let filteredCompleted = [];
-            // for(let i = 0; i < req.user.completed.length; i++) {
-            //     if(req.user.completed[i].place.includes(req.query.place)) {
-            //         filteredCompleted.push(req.user.completed[i]);
-            //     }
-            // }
             context = {planned: filteredPlanned, completed: filteredCompleted, query: req.query.place};
         } else { // otherwise use whole list
             context = {planned: req.user.planned, completed: req.user.completed};
@@ -197,6 +181,10 @@ app.get('/list', (req, res) => {
     } else {
         res.redirect('/login');
     }
+});
+
+app.use(function(req, res) {
+    res.status(404).send('404: Page not Found');
 });
 
 app.listen(process.env.PORT || 3000);
