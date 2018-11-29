@@ -62,7 +62,7 @@ Profile - view and edit profile information, can supply a bio
 
 ## Site map
 
-![sitemap](documentation/sitemap.png)
+![sitemap](/documentation/unit_test_results.png)
 
 ## User Stories
 
@@ -86,7 +86,7 @@ Profile - view and edit profile information, can supply a bio
 * (3 points) unit testing javascript
     * mocha
     * [See tests here](test/test.js) 
-    * ![unit test results images](documentation/unit-test-results.png)
+    * ![unit test results images](documentation/unit_test_results.png)
 * (2 points) use CSS framework
     * Materialize or Bootstrap
     * may drop this later
@@ -99,5 +99,7 @@ Profile - view and edit profile information, can supply a bio
 Authentication - `passport` module
 * [official documentation](http://www.passportjs.org/)
 * [class notes on authentication](https://cs.nyu.edu/courses/fall18/CSCI-UA.0480-003/_site/slides/16/auth.html?print-pdf#/)
+
+More
 * [handle a 404](https://www.hacksparrow.com/express-js-custom-error-pages-404-and-500.html)
 * [request module for testing](https://github.com/request/request)
