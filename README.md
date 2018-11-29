@@ -101,5 +101,4 @@ Authentication - `passport` module
 * [class notes on authentication](https://cs.nyu.edu/courses/fall18/CSCI-UA.0480-003/_site/slides/16/auth.html?print-pdf#/)
 
 More
-* [handle a 404](https://www.hacksparrow.com/express-js-custom-error-pages-404-and-500.html)
 * [request module for testing](https://github.com/request/request)

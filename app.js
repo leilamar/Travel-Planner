@@ -183,8 +183,8 @@ app.get('/list', (req, res) => {
     }
 });
 
-app.use(function(req, res) {
-    res.status(404).send('404: Page not Found');
-});
+// app.use(function(req, res) {
+//     res.status(404).send('404: Page not Found');
+// });
 
 app.listen(process.env.PORT || 3000);
