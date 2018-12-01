@@ -1,4 +1,4 @@
-<h2>Add a trip</h2>
+<h3>Add a trip</h3>
 <form method="POST" action="add">
 	<div>
 		<label for="place">Place:</label>
@@ -10,8 +10,21 @@
 	</div>
     <div id="radio-list">
         <label>Your trip is...</label>
-		<input type="radio" name="tripType" value="planned" checked><label for="planned">Planned</label>
-        <input type="radio" name="tripType" value="completed"><label for="completed">Completed</label>
+		<p>
+			<label>
+				<input class="with-gap" name="tripType" value= "planned" type="radio" checked />
+				<span>Planned</span>
+			</label>
+		</p>
+		<p>
+			<label>
+				<input class="with-gap" name="tripType" value= "completed" type="radio"/>
+				<span>Completed</span>
+			</label>
+		</p>
+		{{!-- <input type="radio" name="tripType" value="planned" checked><label for="planned">Planned</label>
+        <input type="radio" name="tripType" value="completed"><label for="completed">Completed</label> --}}
 	</div>
-	<input type="submit" value="Add">
+	{{!-- <p>Upload an image of your trip</p><input type="file" name="pic" id="pic"><br><br> --}}
+	<input type="submit" class="btn green" value="Add">
 </form>

@@ -32,8 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // log request path and method
 app.use((req,res,next) =>{
-	console.log(req.method, req.path);
-	console.log('req.query: ', req.query);
+    console.log(req.method, req.path);
+    console.log(res.statusCode);
+    // console.log('req.query: ', req.query);
     // console.log('req.body: ', req.body, '\n');
 	next();
 });
@@ -55,20 +56,8 @@ app.get('/', (req, res) => {
         // if query, filter by query
         if(req.query.place && req.query.place !== '') {
             // filter planned trips
-            let filteredPlanned = [];
-            for(let i = 0; i < req.user.planned.length; i++) {
-                if(req.user.planned[i].place.includes(req.query.place)) {
-                    filteredPlanned.push(req.user.planned[i]);
-                }
-            }
-
-            // filter completed trips
-            let filteredCompleted = [];
-            for(let i = 0; i < req.user.completed.length; i++) {
-                if(req.user.completed[i].place.includes(req.query.place)) {
-                    filteredCompleted.push(req.user.completed[i]);
-                }
-            }
+            const filteredPlanned = req.user.planned.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
+            const filteredCompleted = req.user.completed.filter((ele) => ele.place.toLowerCase().includes(req.query.place.toLowerCase()));
             context = {planned: filteredPlanned, completed: filteredCompleted, query: req.query.place};
         } else { // otherwise use whole list
             context = {planned: req.user.planned, completed: req.user.completed};
@@ -77,6 +66,20 @@ app.get('/', (req, res) => {
     } else {
         // if no user, context not needed
         res.render('index');
+    }
+});
+
+app.get('/list', (req, res) => {
+    if(req.user){
+        if(req.query.type === 'planned'){
+            res.render('list', {list: req.user.planned});
+        } else if(req.query.type === 'completed'){
+            res.render('list', {list: req.user.completed});
+        } else {
+            res.render('/');
+        }
+    } else {
+        res.redirect('/login');
     }
 });
 
@@ -115,6 +118,11 @@ app.post('/register', function(req, res) {
     });   
 });
 
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
 app.get('/add', (req, res) => {
     if(req.user){
         res.render('add');
@@ -130,31 +138,32 @@ app.post('/add', (req, res) => {
         new Trip({
             user: user, 
             place: req.body.place,
-            created: Date.now(), // how to get current time?
+            created: Date.now(),
             desc: req.body.desc
         }).save((err, trip) => {
-            // console.log('saved trip');
-            // console.log('user', user);
-            // console.log('user.planned', user.planned);
-            // console.log('user.completed', user.completed);
-            // console.log('req.body.tripType', req.body.tripType);
-
             if(req.body.tripType === 'planned') {
-                // console.log('planned');
                 user.planned.unshift(trip);
+                // modifyArray(user.planned, Array.prototype.unshift, trip);
             } else if (req.body.tripType === 'completed') {
-                // console.log('completed');
                 user.completed.unshift(trip);
+                // modifyArray(user.completed, Array.prototype.unshift, trip);
             }
             
             user.save((err, saved) =>{
                 // console.log("saved user");
-                // console.log('user.planned', user.planned) 
-                res.redirect('/');  
+                // console.log('user.planned', user.planned)
+                res.redirect('/');
             });
         });
     });
 });
+
+function modifyArray(arr, fn, args) {
+    console.log("before push",arr);
+    fn.call(arr, args);
+    console.log("after push", arr);
+
+}
 
 app.get('/account', (req, res) => {
     if(req.user){

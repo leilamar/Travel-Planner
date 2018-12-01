@@ -1,10 +1,25 @@
 {{#if user.bio}}
-    {{user.bio}}
-    <!--<button>Update</button>-->
+    <blockquote class="flow-text">{{user.bio}}</blockquote>
+    <form method="POST" action="account" class="hidden">
+        <textarea id="bio-input" class="materialize-textarea" name="bio" value={{user.bio}}></textarea><br>
+        <input type="submit" class="btn green" value="Update Profile">
+    </form>
+    <div id="update-btn">
+        <button class="btn green">Update</button>
+    </div>
+    <script>
+        function toggleForm() {
+            this.classList.toggle('hidden');
+            document.querySelector('form').classList.toggle('hidden');
+            document.querySelector('blockquote').classList.toggle('hidden');
+        }
+        document.getElementById('update-btn').addEventListener('click', toggleForm);
+        document.querySelector('input').addEventListener('click', toggleForm);
+    </script>
 {{else}}
-    <h3>Introduce yourself!</h3>
+    <h4>Introduce yourself!</h4>
     <form method="POST" action="account">
-	<textarea id="bio-input" name="bio" rows="5"></textarea><br>
-	<input type="submit" value="Update Profile">
-</form>
+        <textarea id="bio-input" class="materialize-textarea" name="bio"></textarea><br>
+        <input type="submit" class="btn green" value="Update Profile">
+    </form>
 {{/if}}
