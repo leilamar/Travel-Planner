@@ -2,7 +2,6 @@ require('./db');
 require('./auth');
 
 const express = require('express');
-//const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -16,7 +15,7 @@ const session = require('express-session');
 const sessionOptions = {
     secret: 'some secret',
     resave: true,
-    saveUninitialized: false // ?
+    saveUninitialized: false
 };
 app.use(session(sessionOptions));
 
@@ -143,10 +142,8 @@ app.post('/add', (req, res) => {
         }).save((err, trip) => {
             if(req.body.tripType === 'planned') {
                 user.planned.unshift(trip);
-                // modifyArray(user.planned, Array.prototype.unshift, trip);
             } else if (req.body.tripType === 'completed') {
                 user.completed.unshift(trip);
-                // modifyArray(user.completed, Array.prototype.unshift, trip);
             }
             
             user.save((err, saved) =>{
@@ -157,13 +154,6 @@ app.post('/add', (req, res) => {
         });
     });
 });
-
-function modifyArray(arr, fn, args) {
-    console.log("before push",arr);
-    fn.call(arr, args);
-    console.log("after push", arr);
-
-}
 
 app.get('/account', (req, res) => {
     if(req.user){
