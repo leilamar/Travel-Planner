@@ -62,7 +62,7 @@ Profile - view and edit profile information, can supply a bio
 
 ## Site map
 
-![sitemap](/documentation/unit_test_results.png)
+![sitemap](/documentation/sitemap.png)
 
 ## User Stories
 
@@ -89,7 +89,6 @@ Profile - view and edit profile information, can supply a bio
     * ![unit test results images](documentation/unit_test_results.png)
 * (2 points) use CSS framework
     * Materialize or Bootstrap
-    * may drop this later
 
 10 points total out of 8 required points
 
@@ -99,6 +98,9 @@ Profile - view and edit profile information, can supply a bio
 Authentication - `passport` module
 * [official documentation](http://www.passportjs.org/)
 * [class notes on authentication](https://cs.nyu.edu/courses/fall18/CSCI-UA.0480-003/_site/slides/16/auth.html?print-pdf#/)
+
+[Materialize - CSS framework](https://materializecss.com/)
+* used [parallax](https://materializecss.com/parallax.html) in `index.hbs`
 
 More
 * [request module for testing](https://github.com/request/request)
