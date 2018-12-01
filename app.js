@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next) =>{
     console.log(req.method, req.path);
     console.log(res.statusCode);
-    console.log('req.query: ', req.query);
+    // console.log('req.query: ', req.query);
     // console.log('req.body: ', req.body, '\n');
 	next();
 });
@@ -138,31 +138,32 @@ app.post('/add', (req, res) => {
         new Trip({
             user: user, 
             place: req.body.place,
-            created: Date.now(), // how to get current time?
+            created: Date.now(),
             desc: req.body.desc
         }).save((err, trip) => {
-            // console.log('saved trip');
-            // console.log('user', user);
-            // console.log('user.planned', user.planned);
-            // console.log('user.completed', user.completed);
-            // console.log('req.body.tripType', req.body.tripType);
-
             if(req.body.tripType === 'planned') {
-                // console.log('planned');
                 user.planned.unshift(trip);
+                // modifyArray(user.planned, Array.prototype.unshift, trip);
             } else if (req.body.tripType === 'completed') {
-                // console.log('completed');
                 user.completed.unshift(trip);
+                // modifyArray(user.completed, Array.prototype.unshift, trip);
             }
             
             user.save((err, saved) =>{
                 // console.log("saved user");
-                // console.log('user.planned', user.planned) 
-                res.redirect('/');  
+                // console.log('user.planned', user.planned)
+                res.redirect('/');
             });
         });
     });
 });
+
+function modifyArray(arr, fn, args) {
+    console.log("before push",arr);
+    fn.call(arr, args);
+    console.log("after push", arr);
+
+}
 
 app.get('/account', (req, res) => {
     if(req.user){

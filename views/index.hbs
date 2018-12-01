@@ -34,9 +34,6 @@
                     <span class="card-title">{{plan.place}}</span>
                     <p>{{plan.desc}}</p>
                 </div>
-                <div class="card-action">
-                    <a href="">Edit</a>
-                </div>
             </div>
             </div>
         </div>
@@ -47,13 +44,12 @@
         </form>
     {{/if}}
 
-    <!-- TODO find not if-->
     {{#if user.planned}}
         
     {{else}}
         <h4>Planned Trips:</h4>
         <p>You don't have any trips planned.</p>
-        <a href="/add" class="btn">Add a trip</a>
+        <a href="/add" class="btn green">Add a trip</a>
     {{/if}}
 
     {{#if completed}}
@@ -71,9 +67,6 @@
                     <span class="card-title">{{complete.place}}</span>
                     <p>{{complete.desc}}</p>
                 </div>
-                <div class="card-action">
-                    <a href="">Edit</a>
-                </div>
             </div>
             </div>
         </div>
@@ -84,13 +77,12 @@
         </form>
     {{/if}}
 
-    <!-- TODO find not if-->
     {{#if user.completed}}
         
     {{else}}
         <h4>Completed Trips:</h4>
         <p>You haven't completed any trips.</p>
-        <a href="/add" class="btn">Add a trip</a>
+        <a href="/add" class="btn green">Add a trip</a>
     {{/if}}
     
 {{else}}
@@ -133,6 +125,7 @@
     <div class="parallax-container">
         <div class="parallax"><img src="img/landing-3.jpg"></div>
     </div>
+    
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/js/materialize.js"></script>
     <script>

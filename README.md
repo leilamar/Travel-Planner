@@ -73,7 +73,8 @@ Profile - view and edit profile information, can supply a bio
 3. as a user, I can view all my planned trips
 4. as a user, I can view all my completed trips
 5. as a user, I can view my profile
-6. as a user, I can update my profile with a biography
+6. as a user, I can add a biography to my profile
+7. as a user, I can update the biography on my profile
 
 ## Research Topics
 

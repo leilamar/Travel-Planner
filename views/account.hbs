@@ -2,10 +2,10 @@
     <blockquote class="flow-text">{{user.bio}}</blockquote>
     <form method="POST" action="account" class="hidden">
         <textarea id="bio-input" class="materialize-textarea" name="bio" value={{user.bio}}></textarea><br>
-        <input type="submit" class="btn" value="Update Profile">
+        <input type="submit" class="btn green" value="Update Profile">
     </form>
     <div id="update-btn">
-        <button class="btn">Update</button>
+        <button class="btn green">Update</button>
     </div>
     <script>
         function toggleForm() {
@@ -20,6 +20,6 @@
     <h4>Introduce yourself!</h4>
     <form method="POST" action="account">
         <textarea id="bio-input" class="materialize-textarea" name="bio"></textarea><br>
-        <input type="submit" class="btn" value="Update Profile">
+        <input type="submit" class="btn green" value="Update Profile">
     </form>
 {{/if}}
