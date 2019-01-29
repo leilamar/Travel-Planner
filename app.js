@@ -33,8 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next) =>{
     console.log(req.method, req.path);
     console.log(res.statusCode);
-    // console.log('req.query: ', req.query);
-    // console.log('req.body: ', req.body, '\n');
 	next();
 });
 
@@ -68,6 +66,7 @@ app.get('/', (req, res) => {
     }
 });
 
+// list all planned trips or all completed trips
 app.get('/list', (req, res) => {
     if(req.user){
         if(req.query.type === 'planned'){

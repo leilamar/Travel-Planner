@@ -7,7 +7,7 @@ Don't worry! My Adventure Book is a web app that allows you to keep track of all
 
 ## Data Model
 
-The application will store Users and Trips
+The application stores Users and Trips
 * users can have a list of planned trips and completed trips
 * each trip contains information about where the trip will take place and some other optional info, like a description
     * trips are user-specific
